@@ -1,0 +1,12 @@
+@media (min-width: 1200px) {
+  nav .container {
+    margin: 1% 9%;
+  }
+  nav .container .navbar-brand {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  nav .container .nav-item {
+    margin: auto 15px;
+  }
+}/*# sourceMappingURL=responsive.css.map */
