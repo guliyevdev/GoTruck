@@ -1,0 +1,56 @@
+.round-button-primary, .round-button-outline {
+  border: 1px solid blue;
+  border-radius: 20px;
+  padding: 8px 25px;
+}
+
+.round-button-outline {
+  color: blue;
+  background-color: white;
+}
+
+.round-button-outline:hover {
+  color: white;
+  background-color: blue;
+  transition: 0.4s;
+}
+
+.round-button-primary {
+  background-color: #1943EF;
+  color: white;
+}
+
+.round {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: solid 15px #F26A36;
+  border-radius: 40px;
+  top: -38px;
+  left: 34%;
+  z-index: 1;
+}
+
+body .header-top {
+  padding: 8px 0;
+  background-color: #f9fafb;
+}
+body .first-area {
+  background-color: aquamarine;
+}
+body .question-area {
+  margin-top: 40px;
+}
+body .question-area h1 {
+  margin-bottom: 40px;
+  text-align: center;
+}
+body footer {
+  margin-top: 40px;
+}
+body footer ul {
+  list-style: none;
+}
+body footer ul li a {
+  text-decoration: none;
+}/*# sourceMappingURL=style.css.map */
