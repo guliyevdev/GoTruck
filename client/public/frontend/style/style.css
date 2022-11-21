@@ -1,3 +1,7 @@
+#app, html, body {
+  height: 100%;
+}
+
 .round-button-primary, .round-button-outline {
   border: 1px solid blue;
   border-radius: 20px;
@@ -38,12 +42,35 @@ body .header-top {
 body .first-area {
   background-color: aquamarine;
 }
-body .question-area {
+body .second-area {
   margin-top: 40px;
 }
-body .question-area h1 {
-  margin-bottom: 40px;
+body .second-area img {
+  width: 100%;
+}
+body .third-area {
+  margin-top: 60px;
+}
+body .third-area h1 {
   text-align: center;
+}
+body .third-area .row {
+  margin-top: 40px;
+}
+body .third-area .row div {
+  display: flex;
+  justify-content: center;
+}
+body .third-area .row div .box {
+  width: 95%;
+  background-color: darkgray;
+  border-radius: 5px;
+}
+body .third-area .row div .box a {
+  text-align: center;
+}
+body .third-area .row div .box:hover {
+  background-color: #F26A36;
 }
 body footer {
   margin-top: 40px;

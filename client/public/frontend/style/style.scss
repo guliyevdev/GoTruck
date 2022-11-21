@@ -1,3 +1,7 @@
+#app,html,body {
+    height: 100%;
+}
+
 $area-space : 20px;
 
 %default-theme-button  {
@@ -38,14 +42,37 @@ body {
     .first-area {
         background-color: aquamarine;
     }
-    
-    .question-area {
+    .second-area {
         margin-top: $area-space*2;
-        h1 {
-            margin-bottom: $area-space*2;
-            text-align: center;
+        img {
+            width: 100%;
         }
     }
+    .third-area {
+        margin-top: $area-space*3;
+        h1 {
+            text-align: center;
+        }
+        .row {
+            margin-top: $area-space*2;
+            div {
+                display: flex;
+                justify-content: center;    
+                .box {
+                    width: 95%;
+                    background-color: darkgray;
+                    border-radius: 5px;
+                    a {
+                        text-align: center;
+                    }
+                }
+                .box:hover {
+                    background-color: #F26A36;
+                }
+            }
+        }
+    }
+
     footer {
         margin-top: $area-space*2;
         ul {
