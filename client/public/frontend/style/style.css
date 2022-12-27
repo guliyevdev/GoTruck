@@ -72,6 +72,22 @@ body .third-area .row div .box a {
 body .third-area .row div .box:hover {
   background-color: #F26A36;
 }
+body .pac-logo::after {
+  display: none;
+}
+body .pac-container {
+  font-family: var(--bs-body-font-family);
+}
+body .pac-container .pac-item {
+  transition: 0.7s;
+}
+body .pac-container .pac-item .pac-item-query {
+  transition: 0.7s;
+  font-size: 16px;
+}
+body .pac-container .pac-item:hover {
+  background-color: #ffc300;
+}
 body footer {
   margin-top: 40px;
 }

@@ -1,0 +1,280 @@
+@import url('./scss/bootstrap.css');
+@import url('./style.css');
+@import url('./reset.css');
+
+// variables
+$section-top: 12%;
+
+html,body {
+    height: 100%;
+}
+header {
+    nav {
+        box-shadow: 4.10924px 4.10924px 12.3277px rgba(0, 0, 0, 0.3);
+        font-family: Inter;
+        padding: 1.2% 0 !important;
+        .container {
+            .navbar-brand {
+                background-image: url('./public/Logo\ 2.png');
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            >div {
+                justify-content: flex-end;
+                ul {
+                    align-items: center;
+                    li {
+                        width: 83px;
+                        display: flex;
+                        justify-content: center;
+                        a {
+                            font-weight: bold;
+                        }
+                        .account {
+                            width: 150px;
+                            height: 70px;
+                            background-color: black;
+                            border-radius: 82px;
+                            color: white;
+                            background-image: url('./public/Profile.png');
+                            background-size: 100%;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                    }
+                    .account-item {
+                        width: 210px;
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+
+                }
+            }
+        }
+    }
+}
+.distance {
+    height: 10em;
+}
+.main {
+    margin-top: 100px;
+    // sectionların ardıcıllığı səhəfədi görünümə uyğundur
+    .hero-section {
+        .row {
+            align-items: center;
+            .text {
+                .hero-title {
+                    font-family: Inter;
+                    font-weight: bolder;
+                    line-height: 60px;
+                }
+                .hero-text {
+                    font-family: Rubik;
+                    line-height: 30px;
+                }
+                .button-one {
+                    margin-top: 3%;
+                }
+            }
+            .image {
+                padding: 3% 0;
+                display: flex;
+                justify-content: flex-end;
+                img {
+                    width: 300px;
+                }
+            }
+        }
+    }
+
+    .truck {
+        img {
+            width: 50%;
+        }
+    }
+
+    .how-to-section {
+        margin-top: $section-top;
+        font-family: Montserrat;
+        .section-title {
+            .title-style-one {
+                margin-bottom: 5%;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+        .carousel {
+            // bu kod bootstrap sliderin default olaraq verdiyi iconu deyisecek
+            .carousel-control-prev {
+                top: -20%;
+                justify-content: flex-start;
+                .carousel-control-prev-icon {
+                    background-image: url('./public/left.svg');
+                }
+            }
+            .carousel-control-next {
+                top: -20%;
+                justify-content: flex-end;
+                .carousel-control-next-icon {
+                    background-image: url('./public/right.svg');
+                }
+            }
+            .carousel-item {
+                .carousel-caption {
+                    position: relative;
+                    left: 0;
+                    right: 0;
+                    padding-top: 0;
+                    // .red-title {
+                    //     font-weight: bold;
+                    //     color: #FF0000;
+                    //     line-height: 30px;
+                    // }
+                    // .title {
+                    //     font-weight: bold;
+                    //     text-align: center;
+                    //     color: black;
+                    //     line-height: 30px;
+                    // }
+                    // .text {
+                    //     color: #737373;
+                    // }
+                }
+            }
+        }
+        .sections {
+            .section {
+                align-items: center;
+                margin: 2% 0;
+
+                img {
+                    width: 73%;
+                }
+            }
+            .two {
+                .section-image {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            }
+        }
+
+    }
+    .faq-background {
+        width: 100%;
+        z-index: -1;
+        position: relative;
+        background-color: #FDEDE8;
+        border-radius: 180px 0 0 0;
+        padding: 2% 0;
+        display: flex;
+        justify-content: flex-end;
+        img {
+            width: 60%;
+            margin: 10% 0 0 30%;
+            position: absolute;
+            z-index: -1;
+        }
+    }
+    .faq {
+        margin-top: 20%;;
+        .accordion {
+            margin-top: 22%;
+            .accordion-item {
+                margin: 2% 0;
+            }
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    font-family: Inter;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    background-image: url('./public/Vector\ 13.svg'),url('./public/BG.svg');
+    background-repeat: no-repeat;
+    background-size: 88%;
+    color: white;
+    // mini truck for footer
+    .mini-truck {
+        img {
+            width: 28%;
+            position: absolute;
+            margin-top: -11%;
+            margin-left: -2%;
+        }
+    }
+    .footer-main {
+        margin-top: -100px;
+        .text-and-request {
+            align-items: center;
+
+            .line-and-text {
+                margin-top: 20%;
+                border-left: 8px solid #ED4D47;
+                padding: 2.5% 5%;
+                // .line {
+                //     width: 1px; height: 50px;
+                //     border: 3px solid #ED4D47;
+                    
+                // }
+
+            }
+            .request {
+                background-color: white;
+                color: black;
+                box-shadow: 4.10924px 4.10924px 12.3277px rgba(0, 0, 0, 0.3);
+                border-radius: 8px;
+                padding: 5% 10%;
+                >div {
+                    margin: 6% 0;
+                    input {
+                        width: 100%;
+                        padding-top: 3.5%;
+                        padding-bottom: 3.5%;
+                    }
+                }
+            }
+        }
+        .links {
+            align-items: center;
+            ul {
+                flex-direction: row;
+                text-align: center;
+                justify-content: flex-end;
+                li {
+                    width: 25%;
+
+                }
+            }
+            .logo {
+                width: 152px;
+                height: 92px;
+                display: block;
+                background-image: url('./public/Logo\ 3.svg');
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+        }
+    }
+    .end {
+        width: 100%;
+        height: auto;
+        background-color: white;
+        color: black;
+        .row {
+            align-items: center;
+            ul {    
+                flex-direction: row;
+                justify-content: flex-end;
+                padding: 2% 15%;
+                li {
+                    padding: 0 2%;
+                }
+            }
+        }
+    }
+}

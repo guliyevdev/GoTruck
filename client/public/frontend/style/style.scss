@@ -72,7 +72,23 @@ body {
             }
         }
     }
-
+    .pac-logo::after {
+        display: none;
+    }
+    .pac-container {
+        font-family: var(--bs-body-font-family);
+        .pac-item {
+            transition: 0.7s;
+            .pac-item-query {
+                transition: 0.7s;
+                font-size: 16px;
+            }
+        }
+        .pac-item:hover {
+            background-color: #ffc300;
+            // color: white;
+        }
+    }
     footer {
         margin-top: $area-space*2;
         ul {

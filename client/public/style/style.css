@@ -1,0 +1,75 @@
+@font-face {
+  font-family: Inter;
+  src: url("./Font/Inter/Inter-VariableFont_slnt,wght.ttf");
+}
+@font-face {
+  font-family: Rubik;
+  src: url("./Font/Rubik/Rubik-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: Lato;
+  src: url("./Font/Lato/Lato-Light.ttf");
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("./Font/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+.hamburger-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-image: url("./public/icon-park_hamburger-button.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.button-one {
+  display: block;
+  width: 150px;
+  text-align: center;
+  font-family: Rubik;
+  font-style: normal;
+  padding: 3% 2%;
+  border-radius: 11px;
+  color: #2D3642;
+  text-decoration: none;
+  background-color: #FFC000;
+  filter: drop-shadow(0px 3.2874px 3.2874px rgba(0, 0, 0, 0.25));
+}
+
+.red-title-style-one {
+  font-weight: bold;
+  color: #FF0000;
+  line-height: 30px;
+  font-family: Montserrat;
+}
+
+.title-style-one {
+  color: black;
+  font-weight: bold;
+  line-height: 60px;
+}
+
+.text-style-one {
+  color: #737373;
+}
+
+.accordion .accordion-item {
+  border-radius: 8px;
+  filter: drop-shadow(0px 3.2874px 3.2874px rgba(0, 0, 0, 0.25));
+}
+.accordion .accordion-button {
+  padding: 5% 4.5%;
+  border-radius: 8px !important;
+  font-family: Rubik;
+  font-weight: 500;
+}
+.accordion .item-red {
+  text-align: center;
+  background-color: rgba(237, 77, 71, 0.2);
+}
+.accordion .item-red::after {
+  background-image: url("./public/+.svg");
+}/*# sourceMappingURL=style.css.map */

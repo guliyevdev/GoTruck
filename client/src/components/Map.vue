@@ -1,21 +1,24 @@
 <script>
 import { Loader } from '@googlemaps/js-api-loader';
-import { ref, onMounted } from 'vue'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'Map',
   data() {
     return {
-      OriginPlace: '',
-      DestinationPlace: '',
-      Distance: '0',
       DirectionRenderer: '',
-      map: ''
+      map: '',
+      roads : [
+        { number: 'M4', name: 'Bakı-Şamaxı-Yevlax', factor: 0.37 },
+        { number: 'R22', name: 'Şəmkir-Gədəbəy', factor: 0.37 },
+        { number: 'R-8', name: 'Muğanlı-İsmayıllı', factor: 0.37 },
+      
+      ]
     }
   },
   mounted() {
     const loader = new Loader({
-      apiKey: "",
+      apiKey: "AIzaSyBBp7fwFegF6SdSDm89VnyxKjjWXmKtR78",
       version: "weekly",
       libraries: ["places"],
       language: 'az',
@@ -38,69 +41,106 @@ export default {
       } else {
         this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
       }
-      this.OriginPlace = new google.maps.places.Autocomplete(
-        this.$refs["origin"],
-        { fields: ["place_id"] }
-      );
-      this.DestinationPlace = new google.maps.places.Autocomplete(
-        this.$refs["destination"],
-        { fields: ["place_id"] }
-      );
       this.DirectionsRenderer = new google.maps.DirectionsRenderer();
       this.DirectionsRenderer.setMap(this.map);
     });
   },
+  computed: {
+    ...mapState(['OriginAndDestinationPlace']),
+  },
   methods: {
-    async CalculateRoute() {
+    ...mapMutations(['setPayment']),
+    // bu funksiya gediş haqlarını hesablamaq üçün yazılmışdır
+    CalculatePayment(data,extra) {
+      // l deyişəni yolun uzuluğudur (km-lə)
+      let l = parseInt(this.getRoadsLength(data.legs[0].distance.text))
+
+      // fix ən aşşağı halda gediş haqqıdır
+      const fix = 120
+      // uzunluq 100 km ə qədər 1x dən hesablanır sonra daha aşağı
+      if (l <= 100){
+        l = l*1
+      }
+      if (l <= 150 && l > 100) {
+        l = (l - 100) * 0.8 + 100
+      }
+      else if (l <= 200 && l > 150) {
+        l = (l - 150) * 0.7 + 140
+      }
+      else if (l <= 300 && l > 200) {
+        l = (l - 200) * 0.68 + 175
+      }
+      else if (l <= 450 && l > 300) {
+        l = (l - 300) * 0.66 + 243
+      }
+      else if (l > 450) {
+        l = (l - 450) * 0.63 + 342
+      }
+      let results = l + fix + extra
+      console.log('l: '+l)
+      console.log('extra: '+extra)
+      console.log('ressult: '+results)
+      results = results - results % 5
+      return results
+    },
+    // google maps api den yol uzunluğu text halında gəlir misal:120 km 180 m və s. burada split ilə parçalasaqda bəzən kilometr yerine metr də çıxa bilər belə olan halda ödənişdə səf olacaq.Bu funksiya ona görə yazılıb  
+    getRoadsLength(value) {
+      let length = value
+      length = length.split(" ")
+      if (length[1] == "m") {
+        length = length[0] * 0.001
+      }
+      else {
+        length = length[0]
+      }
+      return length;
+    },
+    // bu funksiya dağ yollarında əlavə pulu hesablamaq üçün yazılmışdır
+      filterHeavyRoads(data) {
+      let results = 0
+      data.forEach(item => {
+        for (let index = 0; index < this.roads.length; index++) {
+          if (item.instructions.search(this.roads[index].number) > -1 || item.instructions.search(this.roads[index].name) > -1) {
+            results += parseInt(this.getRoadsLength(item.distance.text)) * this.roads[index].factor
+          }
+        }
+      });
+      return results
+    }
+  },
+  watch: {
+    async OriginAndDestinationPlace(newValue, oldValue) {
 
       const DirectionService = new google.maps.DirectionsService();
-      const OriginPlace = this.OriginPlace.getPlace()
-      const DestinationPlace = this.DestinationPlace.getPlace()
 
       const results = await DirectionService.route(
         {
-          origin: { placeId: OriginPlace.place_id },
-          destination: { placeId: DestinationPlace.place_id },
-          // eslint-disable-next-line no-undef
+          origin: { placeId: newValue[0].place_id },
+          destination: { placeId: newValue[1].place_id },
           travelMode: google.maps.TravelMode.DRIVING,
         },
         (response, status) => {
           if (status === "OK") {
-            console.log(response)
-            this.DirectionsRenderer.setDirections(response);
+            this.DirectionsRenderer.setDirections(response)
+            this.continuation = true
+
           } else {
             window.alert("Directions request failed due to " + status);
           }
         }
       )
-      this.Distance = results.routes[0].legs[0].distance.text
+      console.log(results)
+      const extraPrice = this.filterHeavyRoads(results.routes[0].legs[0].steps)
+      console.log(extraPrice)
+      this.setPayment(this.CalculatePayment(results.routes[0], extraPrice))
     }
   }
 
 }
 </script>
 <template>
-  <div class="calculateMap">
-    <form  >
-      <div class="row">
-        <div class="col-6">
-          <h5>Tır</h5>
-          <button>Tır</button>
-        </div>
-        <div class="col-6">
-          <h5>Yük maşını</h5>
-          <button>Yük maşını</button>
-        </div>
-        <div class="col-12">
-          <input type="text" placeholder="Origin" ref="origin" />
-          <input type="text" placeholder="Destination" ref="destination" />
-          <button @click="CalculateRoute">Davam Et</button>
-          <!-- <p> Distance: <b>{{ Distance }}</b> </p> -->
-        </div>
-      </div>
-    </form>
-  </div>
   <div id="map">
+
   </div>
 </template>
 
@@ -109,52 +149,5 @@ export default {
 #map {
   width: 100%;
   height: 100%;
-}
-
-.calculateMap {
-  width: 25%;
-  position: absolute;
-  margin-top: 1%;
-  z-index: 1;
-  background-color: whitesmoke;
-  border-radius: 10px;
-  padding: 1%;
-  display: flex;
-  flex-wrap: wrap;
-  opacity: 100%;
-  transition: 0.6s;
-
-  button {
-    position: relative;
-    top: 0px;
-    padding: 15px 25px;
-    border: solid #1a1a1a 3px;
-    border-radius: 20px;
-    margin: 10px;
-    box-shadow: 0px 10px 0px #1a1a1a;
-  }
-
-  button {
-    background: #ffc300;
-  }
-
-  button:hover {
-    background: #efb300;
-  }
-
-  button:active {
-    background: #dfa300;
-  }
-
-  input {
-    border: 1px solid blanchedalmond;
-    border-radius: 10px;
-    margin: 2%;
-    height: 40px;
-  }
-}
-
-.calculateMap:hover {
-  opacity: 100%;
 }
 </style>

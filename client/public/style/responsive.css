@@ -1,0 +1,110 @@
+@media only screen and (max-width: 576px) {
+  footer {
+    background-image: url("./public/BG  mini.svg");
+    background-size: 100%;
+    padding-top: 55%;
+  }
+  footer .mini-truck {
+    display: none;
+  }
+  footer .footer-main {
+    background-color: #0f264c;
+  }
+  footer .footer-main .line-and-text {
+    margin-top: 0 !important;
+  }
+  footer .footer-main .request {
+    margin-top: 5%;
+  }
+}
+/* Extra small devices (phones, 600px and down) */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  header nav .container .navbar-brand {
+    width: 180px;
+    height: 70px;
+  }
+  footer .links {
+    padding: 3% 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  header nav .container .navbar-brand {
+    width: 180px;
+    height: 70px;
+  }
+  .main .hero-section .text {
+    margin-top: 15%;
+  }
+  .main .hero-section .text .hero-title, .main .hero-section .text .hero-text {
+    text-align: center;
+  }
+  .main .hero-section .text > div {
+    display: flex;
+    justify-content: center;
+  }
+  .truck {
+    margin-top: 10%;
+  }
+  footer .line-and-text {
+    margin-top: 40%;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 991px) {
+  nav ul li {
+    width: 100%;
+    margin: 2% 0;
+  }
+  nav ul li .nav-link {
+    font-size: xx-large;
+  }
+  nav .account-item {
+    margin: 2% 0;
+    justify-content: center !important;
+  }
+  .faq-background {
+    width: 100% !important;
+    margin-left: 0 !important;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    border-radius: 70px 0 0 0 !important;
+  }
+  .faq-background img {
+    width: 50% !important;
+    margin: 0 !important;
+    opacity: 0.5;
+  }
+  .faq {
+    margin-top: 0% !important;
+    text-align: center;
+  }
+  .faq .accordion {
+    margin-top: 10% !important;
+  }
+  .sections .section .section-image img {
+    width: 100% !important;
+  }
+  .sections .section .title {
+    line-height: 40px !important;
+  }
+  .title-style-one {
+    line-height: 40px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  footer .container .text-and-request .text {
+    width: 70%;
+  }
+  footer .container .text-and-request .request {
+    width: 75%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  footer {
+    background-size: 100%;
+  }
+}/*# sourceMappingURL=responsive.css.map */
